@@ -19,17 +19,15 @@ from train import *
 def rew_func(obs):
 	if obs[1] <= 10:
 		rew = -500
-	elif obs[8]:
-		rew = -500
 	else:
 		rew = -1
 	return rew
 
 env_name = "two_lanes_two_way"
-obs_dim = 9
+obs_dim = 8
 act_dim = 1  
 batch_size = 20
-num_episodes = 30000
+num_episodes = 2000
 gamma = 0.995
 lam = 0.98
 HL1_mult = 10

@@ -1,46 +1,32 @@
-import sys
-sys.path.append('')
 from monicars import Environment
 from monicars.variables import global_var
 import numpy as np
 import sys
-# nicer than specifying the exact parent directory regardless of the computer
-import os,sys,inspect
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-# python 2 annoyance
-ppo_path = '/ppo/src'
-sys.path.insert(0,parentdir)
-sys.path.insert(0,(parentdir+ppo_path)) 
+sys.path.insert(0, '/home/adaptation/lberry/Documents/HUAWEI_scenarios/ppo_monicars/src')
 from train import * 
-
 
 
 def rew_func(obs):
 	if obs[1] <= 10:
-		rew = -500
-	elif obs[8]:
-		rew = -500
+		rew = -10000
 	else:
 		rew = -1
 	return rew
 
-env_name = "two_lanes_two_way"
+env_name = "two_lanes"
 obs_dim = 9
-act_dim = 1  
+act_dim = 2  
 batch_size = 20
-num_episodes = 30000
-gamma = 0.995
+num_episodes = 1e5
+gamma = 0.9995
 lam = 0.98
 HL1_mult = 10
 Kl_targ = 0.003
 make_plots = True
 policy_log_var = 1
-render_decision = True
 
 
-main(env_name, num_episodes, gamma, lam, Kl_targ, batch_size, HL1_mult, policy_log_var, make_plots, act_dim, 
-	obs_dim, obstacle = True, reward_function = rew_func, render = render_decision)
+main(env_name, num_episodes, gamma, lam, Kl_targ, batch_size, HL1_mult, policy_log_var, make_plots, act_dim, obs_dim, obstacle = True, reward_function = rew_func, render = True)
 
 
 
@@ -60,9 +46,5 @@ if test:
 		agent_cord = np.array([obs[0],obs[1]])
 		obstacle_cord = np.array([obs[4],obs[5]])
 		distance = np.linalg.norm(obstacle_cord - agent_cord)
-		print(obs)
-		print(obs[4:6])
+		print(env.on_road())
 	env.quit()
-
-
-

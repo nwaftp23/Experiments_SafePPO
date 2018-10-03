@@ -37,10 +37,10 @@ Kl_targ = 0.003
 make_plots = True
 policy_log_var = 1
 render_decision = False
-final_pol_test =100
+
 
 main(env_name, num_episodes, gamma, lam, Kl_targ, batch_size, HL1_mult, policy_log_var, make_plots, act_dim, 
-	obs_dim, final_pol_test, obstacle = True, reward_function = rew_func, render = render_decision)
+	obs_dim, obstacle = True, reward_function = rew_func, render = render_decision)
 
 
 

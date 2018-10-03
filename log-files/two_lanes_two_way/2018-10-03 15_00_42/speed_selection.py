@@ -19,7 +19,7 @@ from train import *
 def rew_func(obs):
 	if obs[1] <= 10:
 		rew = -500
-	elif obs[8]==1:
+	elif obs[8]:
 		rew = -500
 	else:
 		rew = -1

@@ -29,7 +29,7 @@ env_name = "two_lanes_two_way"
 obs_dim = 9
 act_dim = 1  
 batch_size = 20
-num_episodes = 300
+num_episodes = 30000
 gamma = 0.995
 lam = 0.98
 HL1_mult = 10
@@ -37,10 +37,10 @@ Kl_targ = 0.003
 make_plots = True
 policy_log_var = 1
 render_decision = False
-final_pol_test =100
+
 
 main(env_name, num_episodes, gamma, lam, Kl_targ, batch_size, HL1_mult, policy_log_var, make_plots, act_dim, 
-	obs_dim, final_pol_test, obstacle = True, reward_function = rew_func, render = render_decision)
+	obs_dim, obstacle = True, reward_function = rew_func, render = render_decision)
 
 
 
